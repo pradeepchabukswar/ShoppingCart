@@ -13,7 +13,9 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void name() {
-
+    public void shouldCalculateTotalOrderValue() {
+        ShoppingCart shoppingCart=new ShoppingCart("REGULAR",5000);
+        assertNotNull(shoppingCart);
+        assertEquals(5000,shoppingCart.calculateTotal(),0.001);
     }
 }

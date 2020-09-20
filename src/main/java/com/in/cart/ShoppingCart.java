@@ -9,4 +9,8 @@ public class ShoppingCart {
         this.customerType = customerType;
         this.totalAmount = totalAmount;
     }
+
+    public double calculateTotal() {
+        return totalAmount;
+    }
 }
