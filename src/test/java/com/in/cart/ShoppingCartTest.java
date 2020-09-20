@@ -61,7 +61,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void shouldBeAbleToApplyDiscountBasedOnCustomerType_Scenario2_WithOrderValue5000() {
+    public void shouldBeAbleToApplyDiscountBasedOnCustomerType_Scenario3_WithOrderValue5000() {
         Map<CustomerType, List<Promotion>> promotions = new HashMap();
         Promotion promotion = new Promotion(0, 5000, 0);
         Promotion promotion2 = new Promotion(5000, 10000, 10);
@@ -69,5 +69,18 @@ public class ShoppingCartTest {
         PromotionEngine promotionEngine = new PromotionEngine(promotions);
         shoppingCart.setPromotionEngine(promotionEngine);
         assertEquals(5000, shoppingCart.calculateTotal(), 0.001);
+    }
+
+    @Test
+    public void shouldBeAbleToApplyDiscountBasedOnCustomerType_Scenario4_WithOrderValue15000() {
+        shoppingCart = new ShoppingCart(regularCustomer, 15000);
+        Map<CustomerType, List<Promotion>> promotions = new HashMap();
+        Promotion promotion = new Promotion(0, 5000, 0);
+        Promotion promotion2 = new Promotion(5000, 10000, 10);
+        Promotion promotion3 = new Promotion(10000, 15000, 20);
+        promotions.put(regularCustomer, Arrays.asList(promotion, promotion2, promotion3));
+        PromotionEngine promotionEngine = new PromotionEngine(promotions);
+        shoppingCart.setPromotionEngine(promotionEngine);
+        assertEquals(13500, shoppingCart.calculateTotal(), 0.001);
     }
 }
