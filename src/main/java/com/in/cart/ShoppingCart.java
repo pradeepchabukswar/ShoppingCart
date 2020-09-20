@@ -17,7 +17,7 @@ public class ShoppingCart {
     }
 
     public double calculateTotal() {
-        return totalAmount;
+        return totalAmount-promotionEngine.calculateDiscount(customerType,totalAmount);
     }
 
     public void setPromotionEngine(PromotionEngine promotionEngine) {

@@ -6,6 +6,7 @@ import com.in.cart.promotion.Promotion;
 import com.in.cart.promotion.PromotionEngine;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,11 +32,13 @@ public class ShoppingCartTest {
 
     @Test
     public void shouldBeAbleToApplyDiscountBasedOnCustomerType() {
-        ShoppingCart shoppingCart=new ShoppingCart(new RegularCustomer(REGULAR),5000);
+        RegularCustomer regularCustomer = new RegularCustomer(REGULAR);
+        ShoppingCart shoppingCart=new ShoppingCart(regularCustomer,5000);
         Map<CustomerType, List<Promotion>> promotions= new HashMap();
-        Promotion promotion=new Promotion();
+        Promotion promotion=new Promotion(0,5000,0);
+        promotions.put(regularCustomer, Arrays.asList(promotion));
         PromotionEngine promotionEngine = new PromotionEngine(promotions);
         shoppingCart.setPromotionEngine(promotionEngine);
-
+        assertEquals(5000,shoppingCart.calculateTotal(),0.001);
     }
 }
