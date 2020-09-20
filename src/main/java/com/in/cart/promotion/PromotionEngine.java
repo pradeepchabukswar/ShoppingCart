@@ -18,6 +18,6 @@ public class PromotionEngine {
         for (Promotion promotion : promotions) {
             discount += promotion.getDiscount(totalAmount);
         }
-        return 0;
+        return discount;
     }
 }
