@@ -1,2 +1,14 @@
 /.gradle/
 /.idea/
+/build/reports/tests/test/css/base-style.css
+/build/reports/tests/test/packages/com.in.cart.html
+/build/reports/tests/test/classes/com.in.cart.ShoppingCartTest.html
+/build/reports/tests/test/index.html
+/build/test-results/test/binary/output.bin
+/build/test-results/test/binary/output.bin.idx
+/build/reports/tests/test/js/report.js
+/build/test-results/test/binary/results.bin
+/build/classes/java/main/com/in/cart/ShoppingCart.class
+/build/classes/java/test/com/in/cart/ShoppingCartTest.class
+/build/reports/tests/test/css/style.css
+/build/test-results/test/TEST-com.in.cart.ShoppingCartTest.xml

@@ -1,10 +1,16 @@
 package com.in.cart;
+
+import com.in.cart.customer.type.CustomerType;
+import com.in.cart.promotion.PromotionEngine;
+
 public class ShoppingCart {
 
-    private final String customerType;
+    private final CustomerType customerType;
     private final double totalAmount;
 
-    public ShoppingCart(String customerType, double totalAmount) {
+    private PromotionEngine promotionEngine;
+
+    public ShoppingCart(CustomerType customerType, double totalAmount) {
 
         this.customerType = customerType;
         this.totalAmount = totalAmount;
@@ -12,5 +18,9 @@ public class ShoppingCart {
 
     public double calculateTotal() {
         return totalAmount;
+    }
+
+    public void setPromotionEngine(PromotionEngine promotionEngine) {
+        this.promotionEngine = promotionEngine;
     }
 }
