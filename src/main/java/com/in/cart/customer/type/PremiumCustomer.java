@@ -10,6 +10,6 @@ public class PremiumCustomer implements CustomerType {
 
     @Override
     public String getCustomerType() {
-        return name;
+        return "PREMIUM";
     }
 }
