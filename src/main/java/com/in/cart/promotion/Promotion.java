@@ -17,7 +17,7 @@ public class Promotion {
     }
 
     public double getDiscount(double totalAmount) {
-        if (totalAmount < MIN) return 0;
+        if (totalAmount <= MIN) return 0;
 
         if (isWithinPromotionRange(totalAmount))
             return (totalAmount - MIN) * percent / 100;

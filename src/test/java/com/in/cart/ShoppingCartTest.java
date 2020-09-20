@@ -83,4 +83,17 @@ public class ShoppingCartTest {
         shoppingCart.setPromotionEngine(promotionEngine);
         assertEquals(13500, shoppingCart.calculateTotal(), 0.001);
     }
+
+    @Test
+    public void shouldBeAbleToApplyDiscountBasedOnCustomerType_Scenario5_WithOrderValue10000() {
+        shoppingCart = new ShoppingCart(regularCustomer, 10000);
+        Map<CustomerType, List<Promotion>> promotions = new HashMap();
+        Promotion promotion = new Promotion(0, 5000, 0);
+        Promotion promotion2 = new Promotion(5000, 10000, 10);
+        Promotion promotion3 = new Promotion(10000, Double.MAX_VALUE, 20);
+        promotions.put(regularCustomer, Arrays.asList(promotion, promotion2, promotion3));
+        PromotionEngine promotionEngine = new PromotionEngine(promotions);
+        shoppingCart.setPromotionEngine(promotionEngine);
+        assertEquals(9500, shoppingCart.calculateTotal(), 0.001);
+    }
 }
