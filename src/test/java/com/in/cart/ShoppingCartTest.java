@@ -106,7 +106,7 @@ public class ShoppingCartTest {
         Promotion promotion = new Promotion(0, 4000, 10);
         Promotion promotion2 = new Promotion(4000, 8000, 15);
         Promotion promotion3 = new Promotion(8000, 12000, 20);
-        Promotion promotion4 = new Promotion(10000, Double.MAX_VALUE, 30);
+        Promotion promotion4 = new Promotion(12000, Double.MAX_VALUE, 30);
         promotions.put(premiumCustomer, Arrays.asList(promotion, promotion2, promotion3,promotion4));
     }
 
@@ -118,6 +118,26 @@ public class ShoppingCartTest {
         PromotionEngine promotionEngine = new PromotionEngine(promotions);
         shoppingCart.setPromotionEngine(promotionEngine);
         assertEquals(3600, shoppingCart.calculateTotal(), 0.001);
+    }
+
+    @Test
+    public void shouldAbleToAddNewCustomerType_Premium_WithCorrespondingPromotions_Scenario2() {
+        shoppingCart = new ShoppingCart(premiumCustomer, 8000);
+        Map<CustomerType, List<Promotion>> promotions = new HashMap();
+        preparePromotionsForPremiumCustomer(promotions);
+        PromotionEngine promotionEngine = new PromotionEngine(promotions);
+        shoppingCart.setPromotionEngine(promotionEngine);
+        assertEquals(7000, shoppingCart.calculateTotal(), 0.001);
+    }
+
+    @Test
+    public void shouldAbleToAddNewCustomerType_Premium_WithCorrespondingPromotions_Scenario3() {
+        shoppingCart = new ShoppingCart(premiumCustomer, 12000);
+        Map<CustomerType, List<Promotion>> promotions = new HashMap();
+        preparePromotionsForPremiumCustomer(promotions);
+        PromotionEngine promotionEngine = new PromotionEngine(promotions);
+        shoppingCart.setPromotionEngine(promotionEngine);
+        assertEquals(10200, shoppingCart.calculateTotal(), 0.001);
     }
 
 }
