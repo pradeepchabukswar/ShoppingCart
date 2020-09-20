@@ -140,4 +140,14 @@ public class ShoppingCartTest {
         assertEquals(10200, shoppingCart.calculateTotal(), 0.001);
     }
 
+    @Test
+    public void shouldAbleToAddNewCustomerType_Premium_WithCorrespondingPromotions_Scenario4() {
+        shoppingCart = new ShoppingCart(premiumCustomer, 20000);
+        Map<CustomerType, List<Promotion>> promotions = new HashMap();
+        preparePromotionsForPremiumCustomer(promotions);
+        PromotionEngine promotionEngine = new PromotionEngine(promotions);
+        shoppingCart.setPromotionEngine(promotionEngine);
+        assertEquals(15800, shoppingCart.calculateTotal(), 0.001);
+    }
+
 }
