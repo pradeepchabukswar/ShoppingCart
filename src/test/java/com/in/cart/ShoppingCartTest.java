@@ -148,6 +148,7 @@ public class ShoppingCartTest {
         PromotionEngine promotionEngine = new PromotionEngine(promotions);
         shoppingCart.setPromotionEngine(promotionEngine);
         assertEquals(15800, shoppingCart.calculateTotal(), 0.001);
+
     }
 
 }
